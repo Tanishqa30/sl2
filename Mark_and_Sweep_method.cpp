@@ -106,17 +106,17 @@ void mark_node(node* ptr)
     int flag=1;
     while(head !=NULL)
     {
-        if(!head->mark) //if node we are on is unmarked, mark it
+        if(!head->mark) 
         {
             head->mark=true;
         }
-        if(head->adjacent1!=NULL && !head->adjacent1->mark) //if adjacent node to this is unmarked, move to it
+        if(head->adjacent1!=NULL && !head->adjacent1->mark) 
         {
             tail=middle;
             middle=head;
             head=head->adjacent1;
         }
-        else if(head->adjacent2!=NULL && !head->adjacent2->mark)//only move along one adjacent path every iteration
+        else if(head->adjacent2!=NULL && !head->adjacent2->mark)
         {
             tail=middle;
             middle=head;
@@ -174,7 +174,7 @@ int main()
     initialize(A,B);
     cout<<"This is the Simulation for mark sweep garbage collector\n";
     cout<<"Key to navigate the printed table: - indicates connection and [] indicate all the elements connected to the element\n";
-    cout<<"the full heap is: "<<endl;
+    cout<<"The full heap is: "<<endl;
     print_heap(heap);
     cout<<"-----------------"<<endl;
     cout<<"Heap connected to the roots is: "<<endl;
@@ -182,9 +182,9 @@ int main()
     print_useful_heap(B);
     cout<<"-----------------"<<endl;
     garbage_collector(A,B,heap);
-    cout<<"the garbage collector was called, let us see the full heap now\n";
+    cout<<"The garbage collector is called, now the full heap\n";
     print_heap(heap);
-    cout<<"let us see if it matches heap connected to roots printed below\n";
+    cout<<"To check if it matches heap connected to roots printed below\n";
     print_useful_heap(A);
     print_useful_heap(B);
 }
