@@ -50,8 +50,7 @@ void initialize(root& root1,root& root2)
     temp = new node(3);
     heap[7]=temp;
     temp = NULL;
-    //now all nodes are in the 'heap',to create connections now
-    //while making connections, update reference counts
+ 
     root1.pointer=heap[0];//root1->5
     heap[0]->count+=1;
     heap[0]->adjacent1=heap[1];//5->1
@@ -74,7 +73,6 @@ void initialize(root& root1,root& root2)
     heap[6]->count+=1;
     heap[7]->adjacent2=heap[4];//3->10
     heap[4]->count+=1;
-    //connections done
 }
 void print_node(const node* node)
 {
@@ -118,7 +116,7 @@ void garbage_collector_rf(node** arr)
         {
             if(arr[i]->count==0)
             {
-                //update reference counts of adjacent nodes as we disconnect them
+            
                 if(arr[i]->adjacent1!=NULL)
                 {
                     arr[i]->adjacent1->count-=1;
@@ -140,7 +138,7 @@ void garbage_collector_rf(node** arr)
             }
         }
     }
-    if(flag) //if reference counts were updated, call garbage collector again
+    if(flag)
     {
         garbage_collector_rf(arr);
     }
